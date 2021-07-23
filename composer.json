@@ -1,0 +1,8 @@
+{
+    "name": "rjcalifornia/proposals",
+    "description": "Citizen Participation and Open Government plugin for elgg. Inspired by the Consul Application",
+    "type": "project",
+    "require": {
+        "twig/twig": "3.3"
+    }
+}
