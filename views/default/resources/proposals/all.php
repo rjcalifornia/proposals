@@ -20,8 +20,8 @@ $content = elgg_list_entities(array(
 $title = elgg_echo('proposals:all');
 
 $body = elgg_view_layout('content', array(
-	//'filter_context' => 'all',
-//	'content' => $content,
+	'filter_context' => 'all',
+	'content' => $content,
 	'title' => $title,
 	'sidebar' => elgg_view('proposals/sidebar'),
 ));

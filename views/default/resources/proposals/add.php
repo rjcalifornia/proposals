@@ -21,10 +21,10 @@ $twig = $vars['twig'];
 
 $title = elgg_echo('proposals:add');
 elgg_push_breadcrumb($title);
-
+$form_vars = array('enctype' => 'multipart/form-data');
 $vars = proposals_prepare_form_vars();
 $vars['twig'] = $twig;
-$content = elgg_view_form('proposals/save', array(), $vars);
+$content = elgg_view_form('proposals/save', $form_vars, $vars);
 
 $body = elgg_view_layout('content', array(
 	'filter' => '',

@@ -1,0 +1,33 @@
+<div class="proposal-main">
+
+    <div class="proposal-descriptive-image">
+    <img 
+    src="{{data.proposal_descriptive_image.url}}" 
+    alt="{{data.proposal_descriptive_image.filename}}"
+    style="width:100%"
+    />
+    </div>
+    <div class="proposal-quick-info">
+        <p>
+            Proposal code:
+            <strong>{{data.proposals.guid}}</strong>
+        </p>
+
+
+        <blockquote>
+        {{data.summary}}
+        </blockquote>
+    </div>
+
+    <div class="proposal-text">
+        {{data.proposals.description|raw}}
+    </div>
+    <br>
+    <div class="proposal-documents">
+       {% for dc in data.proposal_documents %}
+      <p><a href="{{dc.url}}"> {{dc.filename}}</a></p>
+       {% endfor %}
+    </div>
+</div>
+
+{#{  data.proposals | json_encode(constant('JSON_PRETTY_PRINT')) }#}

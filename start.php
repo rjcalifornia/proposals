@@ -16,12 +16,39 @@ function proposals_init() {
 	$item = new ElggMenuItem('proposals', elgg_echo('proposals:proposals'), 'proposals/all');
 	elgg_register_menu_item('site', $item);
 
+	$root = dirname(__FILE__);
+
+	// actions
+	$action_path = "$root/actions/proposals";
+	elgg_register_action('proposals/save', "$action_path/save.php");
+
 	// routing of urls
 	elgg_register_page_handler('proposals', 'proposals_page_handler');
+
+	// override the default url to view a blog object
+	elgg_register_plugin_hook_handler('entity:url', 'object', 'proposals_set_url');
+
+	elgg_register_entity_type('object', 'proposals');
+
 }
 
 
-
+/**
+ * Format and return the URL for blogs.
+ *
+ * @param string $hook
+ * @param string $type
+ * @param string $url
+ * @param array  $params
+ * @return string URL of blog.
+ */
+function proposals_set_url($hook, $type, $url, $params) {
+	$entity = $params['entity'];
+	if (elgg_instanceof($entity, 'object', 'proposals')) {
+		$friendly_title = elgg_get_friendly_title($entity->title);
+		return "proposals/view/{$entity->guid}/$friendly_title";
+	}
+}
 function proposals_page_handler($page) {
 	
 	//elgg_load_library('elgg:blog');
