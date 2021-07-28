@@ -7,6 +7,7 @@ elgg_entity_gatekeeper($guid, 'object', 'proposals');
 elgg_group_gatekeeper();
 
 $proposals = get_entity($guid);
+elgg_extend_view('page/elements/head', 'extras/scripts');
 
 elgg_set_page_owner_guid($proposals->container_guid);
 

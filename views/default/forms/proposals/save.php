@@ -6,6 +6,7 @@ $summary = elgg_extract('summary', $vars, '');
 $externalVideo = elgg_extract('external_video', $vars, '');
 
 $data['hidden_guid_input'] = '';
+$guid = elgg_extract('guid', $vars, null);
 
 if ($guid) {
 	$hiddenGuid = elgg_view('input/hidden', array('name' => 'guid', 'value' => $guid));
@@ -20,19 +21,27 @@ $scopeOperationList = [
 
 $access_id = elgg_extract('access_id', $vars, ACCESS_DEFAULT);
 $container_guid = elgg_extract('container_guid', $vars);
-$guid = elgg_extract('guid', $vars, null);
+
 
 $titleLabel = elgg_echo('proposals:add:title');
 $titleInput = elgg_view('input/text', array('name' => 'title', 'value' => $title));
 
 $summaryLabel = elgg_echo('proposals:add:summary');
-$summaryInput = elgg_view('input/plaintext', array('name' => 'summary', 'value' => $desc));
+$summaryInput = elgg_view('input/plaintext', array('name' => 'summary', 'value' => $summary));
 
 $proposalTextLabel = elgg_echo('proposals:add:text');
 $proposalTextInput = elgg_view('input/longtext', array('name' => 'description', 'value' => $desc));
 
 $externalVideoLabel = elgg_echo('proposals:add:external_video');
-$externalVideoInput = elgg_view('input/text', array('name' => 'external_video', 'value' => $externalVideo));
+$externalVideoInput = elgg_view('input/text', array('name' => 'external_video', 'id'=>'external_video', 'value' => $externalVideo));
+
+
+$videoType = elgg_view('input/text', array(
+	'name' => 'external_video_type',
+	'id' => 'external_video_type',
+	'hidden' => true,
+	'value' => '',
+));
 
 $tagsLabel = elgg_echo('tags');
 $tagsInput = elgg_view('input/tags', array(
@@ -49,7 +58,7 @@ $descriptiveImageInput = elgg_view('input/file', array(
 	'name' => 'descriptive_image',
         'label' => 'Select a descriptive image',
         'help' => 'Only jpeg, png and png images are supported',
-        'required' => true,
+        'required' => false,
 ));
 
 
@@ -60,7 +69,7 @@ $proposalsDocumentsInput = elgg_view('input/file', array(
         'label' => 'Select documents to upload',
         'multiple' => true,
         'help' => 'Select up to 3 documents',
-        'required' => true,
+        'required' => false,
 ));
 
 
@@ -88,6 +97,7 @@ $hiddenContainer = elgg_view('input/hidden', array('name' => 'container_guid', '
 
 $footer = elgg_view_field([
 	'#type' => 'submit',
+	'id' => 'share',
 	'value' => elgg_echo('save'),
 ]);
 
@@ -104,6 +114,8 @@ $data['summary_input'] = new \Twig\Markup($summaryInput, 'UTF-8');
 
 $data['external_video_label'] = $externalVideoLabel;
 $data['external_video_input'] = new \Twig\Markup($externalVideoInput, 'UTF-8');
+
+$data['external_video_type'] = new \Twig\Markup($videoType, 'UTF-8');
 
 $data['access_label'] = $accessLabel;
 $data['access_input'] = new \Twig\Markup($accessInput, 'UTF-8');

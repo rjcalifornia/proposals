@@ -1,6 +1,7 @@
 <?php
 $full = elgg_extract('full_view', $vars, FALSE);
 $proposals = elgg_extract('entity', $vars, FALSE);
+$site_url = elgg_get_site_url();
 
 if (!$proposals) {
 	return;
@@ -34,6 +35,8 @@ if ($full) {
     
 
     $singleProposal =  get_entity($proposals->guid);
+
+    $tags = $singleProposal->tags;
     $proposalDocuments = elgg_get_entities(array(
         'type' => 'object',
         'subtype' => 'proposals_documents',        
@@ -73,8 +76,12 @@ if ($full) {
     //var_dump($proposalDocuments);
     $data['proposals'] = $singleProposal->toObject();
     $data['summary'] =  $singleProposal->summary;
+    $data['external_video'] =  $singleProposal->external_video;
+    $data['video_type'] =  $singleProposal->external_video_type;
     $data['proposal_documents'] = $getDocuments;
     $data['proposal_descriptive_image'] = $proposalImage;
+    $data['tags'] = $tags;
+    $data['site_url'] = $site_url;
 
     
 

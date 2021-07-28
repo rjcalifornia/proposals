@@ -10,6 +10,8 @@ elgg_group_gatekeeper();
 
 $page_owner = elgg_get_page_owner_entity();
 
+elgg_require_js("proposals/external_video_validation");
+
 // Make sure user has permissions to add to container
 if (!$page_owner || !$page_owner->canWriteToContainer(0, 'object', 'proposals')) {
 	register_error(elgg_echo('actionunauthorized'));

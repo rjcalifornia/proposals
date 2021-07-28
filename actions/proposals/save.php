@@ -10,18 +10,22 @@ $tags = get_input('tags');
 $guid = get_input('guid');
 $container = (int)get_input('container_guid');
 
+$videoType = get_input('external_video_type');
+
 $tagarray = string_to_tag_array($tags);
 
 
 if ($guid) {
-
+    $proposalsEntity = get_entity($guid);
 }else{
     $proposalsEntity = new ElggObject;
+}
     $proposalsEntity->subtype = "proposals";
     $proposalsEntity->title = $title;
     $proposalsEntity->summary = $proposalSummary;
     $proposalsEntity->description = $proposalText;
     $proposalsEntity->external_video = $proposalExternalVideo;
+    $proposalsEntity->external_video_type = $videoType;
     $proposalsEntity->scope_operation = $scopeOperation;
     $proposalsEntity->access_id = $access_id;
     $proposalsEntity->tags = $tagarray;
@@ -54,10 +58,9 @@ if ($descriptiveImage != null) {
     $proposalsGuid= $proposalsEntity->save();
 
     $proposalDocuments = elgg_get_uploaded_files('proposals_documents');
-    if (!$proposalDocuments) {
-        register_error(elgg_echo('proposals:documents:error'));
-        forward(REFERER);
-    }
+    if ($proposalDocuments) {
+        
+    
     
     foreach (elgg_get_uploaded_files('proposals_documents') as $uploadedDocument) {
             $file = new ProposalPaper();
@@ -70,6 +73,7 @@ if ($descriptiveImage != null) {
 
             }
     }
+}
 
     $descriptiveImage = elgg_get_uploaded_files('descriptive_image');
 
@@ -97,10 +101,9 @@ if ($descriptiveImage != null) {
 
     if ($proposalsGuid) {
         system_message("Your proposal was published.");
-        forward($proposalsEntity->getURL());
+        forward('proposals');
      } else {
         register_error("The proposal could not be saved.");
         forward(REFERER); // REFERER is a global variable that defines the previous page
      }
 
-}

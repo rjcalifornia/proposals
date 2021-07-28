@@ -1,0 +1,18 @@
+{% if data.video_type == 1%}
+
+<video
+    id="vid1"
+    class="video-js vjs-default-skin"
+    controls
+
+    width="640" height="480"
+    data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{data.external_video}}"}] }'
+    >
+    </video>
+<br>
+{%endif%}
+
+{% if data.video_type == 2%}
+<a href="{{data.external_video}}">View Vimeo video</a>
+<br>
+{%endif%}

@@ -1,3 +1,4 @@
+{% include 'scripts/videojs_css.html.twig' %}
 <div class="proposal-main">
 
     <div class="proposal-descriptive-image">
@@ -8,26 +9,75 @@
     />
     </div>
     <div class="proposal-quick-info">
-        <p>
+    <br>
+        <p class="proposal-code">
             Proposal code:
-            <strong>{{data.proposals.guid}}</strong>
+            <b>
+                <strong>
+                {{data.proposals.guid}}
+                </strong>
+            </b>
         </p>
 
 
-        <blockquote>
+        <blockquote class="proposal-summary">
         {{data.summary}}
         </blockquote>
     </div>
+    
 
+        <center>
+        {% include 'pages/preview_video.html.twig' %}
+    </center>
+
+
+    {% if data.proposals.description is not empty %}
     <div class="proposal-text">
         {{data.proposals.description|raw}}
     </div>
+
+
     <br>
+    {% endif %}
+
+
+    {% if data.proposal_documents is not empty %}
     <div class="proposal-documents">
        {% for dc in data.proposal_documents %}
-      <p><a href="{{dc.url}}"> {{dc.filename}}</a></p>
+      <p>   <a href="{{dc.url}}">
+                <button class="pure-material-button-contained">
+                    {{dc.filename}}
+                </button>
+            </a>
+            </p>
        {% endfor %}
     </div>
+    <br>
+    {% endif %}
+
+    {% if data.external_video is not empty %}
+    <blockquote>
+    <p class="external-quote">
+    <span class="proposal-elgg-icon fa fa-play-circle"></span> 
+        <b>
+            <span class="video-title">
+            External video
+            </span>
+        </b>
+    </p>
+     <a href="{{data.external_video}}" class="external-quote-link">{{data.external_video}}</a>
+    </blockquote>
+    {% endif %}
+
+    <div class="proposal-tags">
+    {% for t in data.tags %}
+    <a href="{{data.site_url}}search?q={{t}}&search_type=tags" class="proposal-tags-link">{{t}}</a>
+    {% endfor %}
+    </div>
+
+
 </div>
 
+
+{% include 'scripts/videojs_libraries.html.twig' %}
 {#{  data.proposals | json_encode(constant('JSON_PRETTY_PRINT')) }#}

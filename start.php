@@ -16,6 +16,8 @@ function proposals_init() {
 	$item = new ElggMenuItem('proposals', elgg_echo('proposals:proposals'), 'proposals/all');
 	elgg_register_menu_item('site', $item);
 
+	elgg_extend_view('elgg.css', 'custom/css');
+
 	$root = dirname(__FILE__);
 
 	// actions
@@ -126,6 +128,9 @@ function proposals_prepare_form_vars($post = NULL, $revision = NULL) {
 	$values = array(
 		'title' => NULL,
 		'description' => NULL,
+		'summary' => NULL,
+		'external_video' => NULL,
+		'scope_operation' => NULL,
 		'status' => 'published',
 		'access_id' => ACCESS_DEFAULT,
 		'comments_on' => 'On',
