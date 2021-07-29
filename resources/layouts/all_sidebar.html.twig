@@ -1,0 +1,11 @@
+
+<p>
+<div class="sidebar-divider"></div>
+<h2 class="sidebar-title">Categories</h2>
+</p>
+{% for t in data.tags %}
+
+<a href="{{data.site_url}}search?q={{t.tag}}&search_type=all" class="proposal-scope scope-link">
+{{t.tag}}
+</a>
+{% endfor %}

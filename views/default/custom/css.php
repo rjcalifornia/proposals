@@ -1,4 +1,16 @@
 .proposal-tags-link{
+    background: #ececec;
+    border-radius: 0.375rem;
+    color: #222;
+    display: inline-block;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    padding: 0.375rem 0.5rem;
+    text-decoration: none;
+}
+
+
+.proposal-scope{
     background: #e7f2fc;
     border-radius: 0.375rem;
     color: #2367b5;
@@ -9,9 +21,31 @@
     text-decoration: none;
 }
 
+.sidebar-divider {
+    border-top: 1px solid #dee0e3;
+    margin-top: 1.5rem;
+}
+
+
+.sidebar-title {
+    border-top: 2px solid #004a83;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: -1px 0 0.75rem;
+    padding-top: 0.375rem;
+    text-transform: uppercase;
+}
+
+.scope-link:hover{
+    background: #e0e0e0;
+    color: #222;
+    text-decoration:none;
+}
+
 .proposal-tags-link:hover{
-    background: #2367b5;
-    color: #fff;
+    background: #e0e0e0;
+    color: #222;
     text-decoration:none;
 
 }
@@ -44,6 +78,25 @@ line-height: 1.625rem;
     font-size: 18px;
     
 }
+
+
+.supporting{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	color: #FFF;
+	width: auto;
+	padding: 6px 12px;
+	cursor: pointer;
+	border-radius: 3px;
+	box-shadow: inset 0 0 1px rgba(255, 255, 255, 0.6);
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+    border: 1px solid rgba(0, 0, 0, 0.2);
+	background: #FF3300;
+}
+
 
 .external-quote-link{
     font-size: 14px;

@@ -24,6 +24,8 @@ function proposals_init() {
 	$action_path = "$root/actions/proposals";
 	elgg_register_action('proposals/save', "$action_path/save.php");
 
+	elgg_register_action('proposals/supports', "$action_path/supports.php");
+
 	// routing of urls
 	elgg_register_page_handler('proposals', 'proposals_page_handler');
 

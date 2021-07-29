@@ -1,13 +1,15 @@
 {% include 'scripts/videojs_css.html.twig' %}
 <div class="proposal-main">
 
+    {% if data.proposal_descriptive_image is not empty %}
     <div class="proposal-descriptive-image">
-    <img 
-    src="{{data.proposal_descriptive_image.url}}" 
-    alt="{{data.proposal_descriptive_image.filename}}"
-    style="width:100%"
-    />
+        <img 
+        src="{{data.proposal_descriptive_image.url}}" 
+        alt="{{data.proposal_descriptive_image.filename}}"
+        style="width:100%"
+        />
     </div>
+    {% endif %}
     <div class="proposal-quick-info">
     <br>
         <p class="proposal-code">
@@ -46,6 +48,7 @@
        {% for dc in data.proposal_documents %}
       <p>   <a href="{{dc.url}}">
                 <button class="pure-material-button-contained">
+                    <span class="fa fa-files-o" ></span> 
                     {{dc.filename}}
                 </button>
             </a>
@@ -75,6 +78,12 @@
     {% endfor %}
     </div>
 
+
+    <div class="proposal-scope-operation">
+    <a href="{{data.site_url}}search?q={{data.scope}}&search_type=all" class="proposal-scope scope-link">
+        {{data.scope}}
+    </a>
+     </div>
 
 </div>
 

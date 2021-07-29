@@ -59,23 +59,27 @@ if ($full) {
         'distinct' => false,
     ));
 
-    $descriptiveImageUrl = elgg_get_download_url($descriptiveImage[0]);
-    $descriptiveImageFilename = $descriptiveImage[0]->title;
+    if(!empty($descriptiveImage)){
+        $descriptiveImageUrl = elgg_get_download_url($descriptiveImage[0]);
+        $descriptiveImageFilename = $descriptiveImage[0]->title;
 
-    $proposalImage = ['url'=> $descriptiveImageUrl, 'filename' => $descriptiveImageFilename];
-
-    foreach ($proposalDocuments as $prDoc) {
-        $document = get_entity($prDoc->guid);
-        $documentUrl = elgg_get_download_url($document);
-
-        $getDocuments[] = ['filename' => $document->title, 'url' => $documentUrl];
-      
+        $proposalImage = ['url'=> $descriptiveImageUrl, 'filename' => $descriptiveImageFilename];
     }
+        foreach ($proposalDocuments as $prDoc) {
+            $document = get_entity($prDoc->guid);
+            $documentUrl = elgg_get_download_url($document);
+
+            $getDocuments[] = ['filename' => $document->title, 'url' => $documentUrl];
+        
+        }
+    
+    
 
 
     //var_dump($proposalDocuments);
     $data['proposals'] = $singleProposal->toObject();
     $data['summary'] =  $singleProposal->summary;
+    $data['scope'] = $singleProposal->scope_operation;
     $data['external_video'] =  $singleProposal->external_video;
     $data['video_type'] =  $singleProposal->external_video_type;
     $data['proposal_documents'] = $getDocuments;

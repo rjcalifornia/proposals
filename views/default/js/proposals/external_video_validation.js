@@ -8,7 +8,6 @@ define(function(require) {
     var elgg = require("elgg");
     var $ = require("jquery");
 
-console.log('9fdf');
 
 
 
@@ -23,6 +22,8 @@ $( "#external_video" ).keyup(function() {
 
             if(url.match(regExp)){
             document.getElementById("external_video_type").value = "1";
+            console.log('9fdf');
+
             }
 
             if(url.match(regVimeo)){

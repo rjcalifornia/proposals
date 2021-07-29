@@ -19,11 +19,13 @@ $content = elgg_list_entities(array(
 
 $title = elgg_echo('proposals:all');
 
+$sidebar = elgg_view('custom/full', ['twig'=> $vars['twig']]);
+
 $body = elgg_view_layout('content', array(
 	'filter_context' => 'all',
 	'content' => $content,
 	'title' => $title,
-	'sidebar' => elgg_view('proposals/sidebar'),
+	'sidebar' => $sidebar,
 ));
 
 echo elgg_view_page($title, $body);

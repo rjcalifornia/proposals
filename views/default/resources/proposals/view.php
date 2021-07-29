@@ -35,7 +35,11 @@ $params['content'] = elgg_view_entity($proposals, array('full_view' => true, 'tw
 	$params['content'] .= elgg_view_comments($proposals);
 //}
 
-$params['sidebar'] = elgg_view('proposals/sidebar', array('page' => $page_type));
+$params['sidebar'] = elgg_view('custom/sidebar', [
+					'page' => $page_type,
+					'twig'=> $vars['twig'],
+					'proposal_guid' => $proposals->guid
+				]);
 
 $body = elgg_view_layout('content', $params);
 
