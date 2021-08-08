@@ -72,11 +72,22 @@ if ($full) {
             $getDocuments[] = ['filename' => $document->title, 'url' => $documentUrl];
         
         }
-    
+    $admin = elgg_is_admin_logged_in();
+
+    $selectUrl = "action/proposals/select?guid=$singleProposal->guid";
+	$selectProposal = elgg_view('output/url', array(
+		'href' => $selectUrl,
+		'text' => elgg_echo('proposal:mark_selected'),
+		'class' => 'pure-material-button-contained select',
+		//'confirm' => true,
+        'confirm'=>"Are you sure you want to mark this proposal as selected?"
+	));
     
 
 
-    //var_dump($proposalDocuments);
+    //var_dump($singleProposal->selected);
+    $data['admin'] = $admin;
+    $data['select_proposal'] = new \Twig\Markup($selectProposal, 'UTF-8');
     $data['proposals'] = $singleProposal->toObject();
     $data['summary'] =  $singleProposal->summary;
     $data['scope'] = $singleProposal->scope_operation;
@@ -100,10 +111,11 @@ if ($full) {
 		'entity' => $proposals,
 		'metadata' => $metadata,
 		'subtitle' => $subtitle,
+        'summary' => $proposals->summary,
 		'content' => $excerpt,
 		'icon' => $owner_icon,
 	);
 	$params = $params + $vars;
-	echo elgg_view('object/elements/summary', $params);
+	echo elgg_view('custom/summary', $params);
 
 }

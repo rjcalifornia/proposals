@@ -30,10 +30,12 @@ elgg_push_breadcrumb($proposals->title);
 
 $params['content'] = elgg_view_entity($proposals, array('full_view' => true, 'twig'=> $vars['twig']));
 
-// check to see if we should allow comments
-//if ($proposals->comments_on != 'Off' && $proposals->status == 'published') {
+
+if (!elgg_is_admin_logged_in()) {
 	$params['content'] .= elgg_view_comments($proposals);
-//}
+}else{
+	$params['content'] .= elgg_view_comments($proposals, false);
+}
 
 $params['sidebar'] = elgg_view('custom/sidebar', [
 					'page' => $page_type,

@@ -4,6 +4,8 @@ $title = elgg_extract('title', $vars, '');
 $desc = elgg_extract('description', $vars, '');
 $summary = elgg_extract('summary', $vars, '');
 $externalVideo = elgg_extract('external_video', $vars, '');
+$videoTypeValue = elgg_extract('external_video_type', $vars, '');
+
 
 $data['hidden_guid_input'] = '';
 $guid = elgg_extract('guid', $vars, null);
@@ -40,7 +42,7 @@ $videoType = elgg_view('input/text', array(
 	'name' => 'external_video_type',
 	'id' => 'external_video_type',
 	'hidden' => true,
-	'value' => '',
+	'value' => $videoTypeValue,
 ));
 
 $tagsLabel = elgg_echo('tags');

@@ -4,6 +4,7 @@ $proposalGuid = elgg_extract('proposal_guid', $vars);
 $twig = elgg_extract('twig', $vars);
 $guid = elgg_get_logged_in_user_entity()->guid;
 
+$proposals = get_entity($proposalGuid);
 
 $supportNeeded = elgg_get_plugin_setting('support_needed_setting', 'proposals');
 
@@ -63,7 +64,7 @@ if(!empty($supporters) && $guid == true){
     $data['supporting_proposal'] = $userSupport;
     $data['auth'] = $showAuthButton;
     $data['support_needed'] = $supportNeeded;
-
+    $data['is_selected'] = $proposals->selected;
     echo $twig->render('layouts/sidebar.html.twig', 
     [
         'data' => $data,

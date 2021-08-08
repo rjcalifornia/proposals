@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;700&display=swap');
+
 .proposal-tags-link{
     background: #ececec;
     border-radius: 0.375rem;
@@ -26,6 +28,18 @@
     margin-top: 1.5rem;
 }
 
+
+.heading-all {
+    padding-bottom: 2%;
+    clear: both;
+    font-weight: 700;
+    font-size: 1.4rem;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.heading-all a{
+    color: #222;
+}
 
 .sidebar-title {
     border-top: 2px solid #004a83;
@@ -65,6 +79,13 @@ font-weight: 400;
 line-height: 1.625rem;
 }
 
+.padding-all{
+    padding-top: 1%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: lighter;
+    
+}
+
 .proposal-code{
     font-size: 17px;
 }
@@ -72,6 +93,38 @@ line-height: 1.625rem;
 .proposal-elgg-icon{
     color:red;
     font-size: 26px;
+}
+
+.select {
+    text-decoration: none !important;
+}
+
+.callout.success {
+    background-color: #e1faea;
+    color: #0a0a0a;
+}
+.callout {
+    font-size: 0.875rem;
+    overflow: hidden;
+}
+.callout {
+    position: relative;
+    margin: 0 0 1rem 0;
+    padding: 1rem;
+    border: 1px solid rgba(10,10,10,0.25);
+        border-top-color: rgba(10, 10, 10, 0.25);
+        border-right-color: rgba(10, 10, 10, 0.25);
+        border-bottom-color: rgba(10, 10, 10, 0.25);
+        border-left-color: rgba(10, 10, 10, 0.25);
+    border-radius: 0;
+    background-color: white;
+    color: #0a0a0a;
+}
+
+.callout.success, .callout.notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
 }
 
 .video-title{

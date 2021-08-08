@@ -32,6 +32,16 @@ $support->access_id = ACCESS_PUBLIC;
 $support->save();
 
 if ($support) {
+    
+    elgg_create_river_item(array(
+		'view' => 'river/object/proposals/support',
+		'action_type' => 'support',
+		'subject_guid' => $user->guid,
+		'object_guid' => $proposals->guid,
+		'target_guid' =>  $proposals->getGUID(),
+	));
+
+
     system_message("You are supporting this proposal");
     forward($proposals->getURL());
  } 

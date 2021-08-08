@@ -14,6 +14,9 @@ return array(
     'item:object:proposals' => 'Proposals',
     'scope:one' => 'All city',
     'scope:two' => 'Central District',
+    'proposals:selected' => 'Selected proposals',
+    'proposal:mark_selected' => 'Mark proposal as selected',
+    'river:support:object:proposals' => '%s supported the project %s',
 
 //	'profile:notfound' => 'Sorry. We could not find the requested profile.',
 

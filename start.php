@@ -23,7 +23,7 @@ function proposals_init() {
 	// actions
 	$action_path = "$root/actions/proposals";
 	elgg_register_action('proposals/save', "$action_path/save.php");
-
+	elgg_register_action('proposals/select', "$action_path/select.php");
 	elgg_register_action('proposals/supports', "$action_path/supports.php");
 
 	// routing of urls
@@ -117,6 +117,10 @@ function proposals_page_handler($page) {
 		case 'all':
 			echo elgg_view_resource('proposals/all', $resource_vars);
 			break;
+
+		case 'selected':
+			echo elgg_view_resource('proposals/selected', $resource_vars);
+			break;
 		default:
 			return false;
 	}
@@ -133,6 +137,7 @@ function proposals_prepare_form_vars($post = NULL, $revision = NULL) {
 		'summary' => NULL,
 		'external_video' => NULL,
 		'scope_operation' => NULL,
+		'external_video_type' => NULL,
 		'status' => 'published',
 		'access_id' => ACCESS_DEFAULT,
 		'comments_on' => 'On',

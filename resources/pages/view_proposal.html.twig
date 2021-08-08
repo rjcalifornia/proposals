@@ -1,4 +1,5 @@
 {% include 'scripts/videojs_css.html.twig' %}
+
 <div class="proposal-main">
 
     {% if data.proposal_descriptive_image is not empty %}
@@ -10,6 +11,7 @@
         />
     </div>
     {% endif %}
+    
     <div class="proposal-quick-info">
     <br>
         <p class="proposal-code">
@@ -86,6 +88,14 @@
      </div>
 
 </div>
+
+
+{% if data.admin == true and data.is_selected == false %}
+<div style="padding: 18px;">
+   {{data.select_proposal}}
+</div>
+{% endif %}
+
 
 
 {% include 'scripts/videojs_libraries.html.twig' %}
