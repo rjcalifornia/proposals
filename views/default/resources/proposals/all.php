@@ -1,8 +1,8 @@
 <?php
 
 
-elgg_pop_breadcrumb();
-elgg_push_breadcrumb(elgg_echo('proposals'));
+//elgg_pop_breadcrumb();
+elgg_push_collection_breadcrumbs('object', 'proposals');
 
 elgg_register_title_button('proposals', 'add', 'object', 'proposals');
 
@@ -19,10 +19,10 @@ $content = elgg_list_entities(array(
 
 $title = elgg_echo('collection:object:proposals:all');
 
-$sidebar = elgg_view('custom/full', ['twig'=> $vars['twig']]);
+$sidebar = elgg_view('custom/full',  ['page' => 'all']);
 
 $body = elgg_view_layout('content', array(
-	'filter_context' => 'all',
+	'filter_value' => 'all',
 	'content' => $content,
 	'title' => $title,
 	'sidebar' => $sidebar,

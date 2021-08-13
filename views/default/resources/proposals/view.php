@@ -22,8 +22,9 @@ $crumbs_title = $container->name;
 
 
 
-elgg_push_breadcrumb($proposals->title);
-
+//elgg_push_breadcrumb($proposals->title);
+//elgg_push_entity_breadcrumbs($proposals, false);
+elgg_push_collection_breadcrumbs('object', 'proposals');
 $params['content'] = elgg_view_entity($proposals, array('full_view' => true, 
                                                       //  'twig'=> $vars['twig']
                                                     ));

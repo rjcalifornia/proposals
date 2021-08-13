@@ -1,0 +1,50 @@
+{% if data.is_selected == true %}
+<div class="callout success">
+    <strong>Selected proposal</strong>
+  </div>
+{% endif %}
+
+<h2>Supports</h2>
+
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+<center>
+{{data.supporters}} supporters
+<br>
+{{supports_needed}}
+</center>
+
+{% if data.support_validation == true and data.auth == false %}
+
+<div style="padding-top: 12px;">
+    <center>
+    {{data.support_button}}
+    </center>
+</div>
+{% endif %}
+
+
+{% if data.auth == true %}
+<div style="padding-top: 18px;">
+<a href="{{data.site_url}}login">
+    <button class="pure-material-button-contained">
+    Login to support this proposal
+    </button>
+</a>
+</div>
+{% endif %}
+
+
+{% if data.supporting_proposal == true %}
+<div style="padding-top: 18px;">
+ <center>
+    <button class="supporting">
+    You are supporting this proposal
+    </button>
+ </center>
+</div>
+{% endif %}
+
+{% include 'scripts/chartjs.html.twig' %}

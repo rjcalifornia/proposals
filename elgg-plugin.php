@@ -5,17 +5,28 @@ require_once(__DIR__ . '/lib/functions.php');
 return [
 
     'entities' =>[
+
+        //Declarar Proposal Entity
         [
             'type' => 'object',
             'subtype' => 'proposals',
             'searchable' => true,
         ],
 
+        //Declarar entity de la imagen de cover. No necesitamos mostrar en las busquedas
         [
             'type' => 'object',
             'subtype' => 'proposals_descriptive_image',
             'class' => 'ProposalFeatured',
-            'searchable' => true,
+            'searchable' => false,
+        ],
+
+        //Declarar entity de los documentos
+        [
+            'type' => 'object',
+            'subtype' => 'proposals_documents',
+            'class' => 'ProposalPaper',
+            'searchable' => false,
         ],
        
     ],
@@ -57,6 +68,22 @@ return [
         'view:object:proposals' => [
 			'path' => '/proposals/view/{guid}/{title?}',
 			'resource' => 'proposals/view',
+		],
+
+        //Editar la propuesta
+        'edit:object:proposals' => [
+			'path' => '/proposals/edit/{guid}',
+			'resource' => 'proposals/edit',
+			'middleware' => [
+				\Elgg\Router\Middleware\Gatekeeper::class,
+			],
+		],
+
+        //Ver propuestas seleccionadas
+        'selected:object:proposals' => [
+			'path' => '/proposals/selected',
+			'resource' => 'proposals/selected',
+			
 		],
 
         

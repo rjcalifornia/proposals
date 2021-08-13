@@ -26,5 +26,6 @@ return array(
     'proposals:selected' => 'Selected proposals',
     'proposal:mark_selected' => 'Mark proposal as selected',
     'river:support:object:proposals' => '%s supported the project %s',
+    'river:object:proposals:support' => '%s supported the project %s',
 
 );

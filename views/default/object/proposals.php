@@ -67,10 +67,10 @@ if ($full) {
         $proposalImage = ['url'=> $descriptiveImageUrl, 'filename' => $descriptiveImageFilename];
     }
         foreach ($proposalDocuments as $prDoc) {
-         //   $document = get_entity($prDoc->guid);
-        //    $documentUrl = elgg_get_download_url($document);
+            $document = get_entity($prDoc->guid);
+            $documentUrl = elgg_get_download_url($document);
 
-      //      $getDocuments[] = ['filename' => $document->title, 'url' => $documentUrl];
+            $getDocuments[] = ['filename' => $document->title, 'url' => $documentUrl];
         
         }
     $admin = elgg_is_admin_logged_in();
@@ -97,6 +97,7 @@ if ($full) {
     $data['proposal_documents'] = $getDocuments;
     $data['proposal_descriptive_image'] = $proposalImage;
     $data['tags'] = $tags;
+    $data['is_selected'] = $singleProposal->selected;
     $data['site_url'] = $site_url;
 
     

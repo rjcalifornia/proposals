@@ -18,7 +18,7 @@ elgg_entity_gatekeeper($guid);
 
 $page_owner = elgg_get_page_owner_entity();
 
-//elgg_require_js("proposals/external_video_validation");
+elgg_require_js("elgg/proposals/external_video_validation");
 
 // Make sure user has permissions to add to container
 if (!$container->canWriteToContainer(0, 'object', 'proposals')) {

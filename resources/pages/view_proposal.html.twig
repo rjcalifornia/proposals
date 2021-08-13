@@ -10,6 +10,16 @@
         style="width:100%"
         />
     </div>
+    {% else %}
+    <div class="proposal-descriptive-image">
+    <center>
+        <img 
+        src="{{data.site_url}}mod/proposals/graphics/project.png" 
+        alt="{{data.proposals.title}}"
+        style="width:34%"
+        />
+    </center>
+    </div>
     {% endif %}
     
     <div class="proposal-quick-info">
@@ -89,7 +99,7 @@
 
 </div>
 
-
+{#{data.is_selected}#}
 {% if data.admin == true and data.is_selected == false %}
 <div style="padding: 18px;">
    {{data.select_proposal}}
