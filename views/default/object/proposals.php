@@ -84,7 +84,7 @@ if ($full) {
         'confirm'=>"Are you sure you want to mark this proposal as selected?"
 	));
     
-
+    $responses = elgg_view_comments($proposals, true);
 
     //var_dump($singleProposal->selected);
     $data['admin'] = $admin;
@@ -99,6 +99,7 @@ if ($full) {
     $data['tags'] = $tags;
     $data['is_selected'] = $singleProposal->selected;
     $data['site_url'] = $site_url;
+    $data['responses'] = new \Twig\Markup($responses, 'UTF-8');
 
     
 
