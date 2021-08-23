@@ -10,6 +10,7 @@ return [
         [
             'type' => 'object',
             'subtype' => 'proposals',
+            'class' => 'ElggProposals',
             'searchable' => true,
         ],
 

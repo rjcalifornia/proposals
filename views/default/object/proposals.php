@@ -110,15 +110,11 @@ if ($full) {
 } else {
 	// brief view
 
-	$params = array(
-		'entity' => $proposals,
-		'metadata' => $metadata,
-		'subtitle' => $subtitle,
-        'summary' => $proposals->summary,
-		'content' => $proposals->summary,
-		'icon' => $owner_icon,
-	);
+	$params = [
+		'content' => $proposals->getExcerpt(),
+		'icon' => true,
+	];
 	$params = $params + $vars;
-	echo elgg_view('custom/summary', $params);
+	echo elgg_view('object/elements/summary', $params);
 
 }
