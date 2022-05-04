@@ -2,8 +2,13 @@
 $page = elgg_extract('page', $vars);
 $proposalGuid = elgg_extract('proposal_guid', $vars);
 $twig = elgg_extract('twig', $vars);
-$guid = elgg_get_logged_in_user_entity()->guid;
+$getUser = elgg_get_logged_in_user_entity();
 
+if(!empty($getUser)){
+    $guid = $getUser->guid;
+}else{
+    $guid = null;
+}
 $twig = elgg_twig();
 
 $proposals = get_entity($proposalGuid);
@@ -39,7 +44,7 @@ $supporters = elgg_get_entities(array(
 if(!empty($supporters)){
     $showSupportButton = false;
 }
-
+$showAuthButton = false;
 if($guid == false){
     $showAuthButton = true;
 }
@@ -68,7 +73,8 @@ if(!empty($supporters) && $guid == true){
     $data['site_url'] =  elgg_get_site_url();
     $data['support_needed'] = $supportNeeded;
     $data['is_selected'] = $proposals->selected;
-    echo $twig->render('layouts/sidebar.html.twig', 
+
+    echo $twig->render('proposals/layouts/sidebar.html.twig', 
     [
         'data' => $data,
     ]);

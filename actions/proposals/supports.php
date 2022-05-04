@@ -1,6 +1,7 @@
 <?php
 
-if(!elgg_is_logged_in){
+$user = elgg_get_logged_in_user_entity();
+if(empty($user)){
     register_error(elgg_echo('not:allowed'));
 	forward("proposals");
 }
@@ -9,7 +10,7 @@ if(!elgg_is_logged_in){
 elgg()->session->setIgnoreAccess(true);
 $proposalGuid = get_input('guid');
 $proposals = get_entity($proposalGuid);
-$user = elgg_get_logged_in_user_entity();
+
 
 
 $findUserSupport = elgg_get_entities(array(

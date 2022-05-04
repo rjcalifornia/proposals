@@ -18,7 +18,7 @@ $proposalTags = elgg_get_tags([
  $data['site_url'] = $site_url;
 
 $data['tags'] = $proposalTags; 
-echo $twig->render('layouts/all_sidebar.html.twig', 
+echo $twig->render('proposals/layouts/all_sidebar.html.twig', 
     [
         'data' => $data,
     ]);

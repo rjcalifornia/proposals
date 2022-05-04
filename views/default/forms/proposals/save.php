@@ -143,7 +143,7 @@ $data['hidden_container_input'] = new \Twig\Markup($hiddenContainer, 'UTF-8');
 $data['footer'] = new \Twig\Markup(($footer), 'UTF-8');
 
 
-echo $twig->render('forms/add-proposal.html.twig', 
+echo $twig->render('proposals/forms/add-proposal.html.twig', 
         [
             'data' => $data,
         ]);

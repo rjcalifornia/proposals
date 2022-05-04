@@ -1,4 +1,4 @@
-{% include 'scripts/videojs_css.html.twig' %}
+{% include 'proposals/scripts/videojs_css.html.twig' %}
 
 <div class="proposal-main">
 
@@ -41,7 +41,7 @@
     
 
         <center>
-        {% include 'pages/preview_video.html.twig' %}
+        {% include 'proposals/pages/preview_video.html.twig' %}
     </center>
 
 
@@ -108,5 +108,5 @@
 
 {{data.responses}}
 
-{% include 'scripts/videojs_libraries.html.twig' %}
+{% include 'proposals/scripts/videojs_libraries.html.twig' %}
 {#{  data.proposals | json_encode(constant('JSON_PRETTY_PRINT')) }#}

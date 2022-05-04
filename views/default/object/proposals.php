@@ -11,6 +11,8 @@ $getDocuments = [];
 
 $twig = elgg_twig();
 
+$comments_link = '';
+
 $owner = $proposals->getOwnerEntity();
 $owner_icon = elgg_view_entity_icon($owner, 'tiny');
 $categories = elgg_view('output/categories', $vars);
@@ -103,7 +105,7 @@ if ($full) {
 
     
 
-    echo $twig->render('pages/view_proposal.html.twig', 
+    echo $twig->render('proposals/pages/view_proposal.html.twig', 
     [
         'data' => $data,
     ]);
